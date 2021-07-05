@@ -1,0 +1,24 @@
+{%extends 'base/base.html'%}
+{block titulo %}
+Nuevo Usuario
+{endblock titulo %}
+{%block contenido%}
+<section class="row">
+    <article class="card col-md-6-sm-12  col-xl-5 offset-md-3 offset-xl-4">
+        <section class="card-body">
+            <h3 class="card-tittle text-center">Nuevo Registro</h3>
+            <form method="POST">
+                {{%csrs_token%}}
+                {% for campo  in formulario %}
+                    <div class="form-group col-md-12">
+                        <label for="{{campo.id_for_label}}">{{campo.label}}</label>
+                        {{campo}}
+                    </div>
+                {%endfor%}
+                <div class="from-group">
+                    <input type="submit" class="btn btn-block btn-success" value="Registrarse">
+                </div>
+        </section>
+    </article>
+</section>
+{%endblock contenido%}
