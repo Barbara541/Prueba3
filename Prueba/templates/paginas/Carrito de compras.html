@@ -1,0 +1,45 @@
+{%extends 'base/base.html'%}
+
+
+
+{%block contenido%}
+
+carrito
+
+
+{%endblock%}
+
+<table class="table table-bordered" style="color:white">
+
+    <thead>
+        <tr colspan="3" class="text-center">
+
+            carro compras
+
+        </tr>
+
+        <tr>
+            <th>Productos</th>
+            <th>Cantidad</th>
+            <th>Suma</th>
+        </tr>
+    </thead>
+    <tboby>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+
+            {% endfor %}
+
+        {% else %}
+            <tr>
+
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">
+                        
+                        Sin productos
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </tboby>
+</table>
