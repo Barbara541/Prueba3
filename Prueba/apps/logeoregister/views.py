@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import RegistroUsuario
 from .models import Registro
+from django.contrib import messages
 # Create your views here.
 def registro(request):
     return render(request, 'paginas/registro.html')
@@ -9,17 +10,24 @@ def registro(request):
 def registro(request):  
     formulario = None
     if request.method == 'POST':
-        formulario =  Registro(request.POST)  
+        formulario =  RegistroUsuario(request.POST)  
         if formulario.is_valid():
-            usuario = formulario.save()
-            usuario.refresh_from_db()
-            usuario.perfil.rut = formulario.cleaned_data.get('rut')
-            usuario.save()
-            return redirect('paginaprincipal')
-        if request.method == 'GET':
-            formulario = RegistroUsuario()  
-        contexto ={
-            'formulario': formulario
-        }   
+            username = formulario.cleaned_data['username']
+            ##usuario = formulario.save()
+            ##usuario.refresh_from_db()
+            formulario.save()
+            messages.success(request, 'Usuario {} Registrado correctamente'.format(
+                username
+            ))
+            return redirect('principal')
+        else:
+            messages.info(request, 'Formulario incompleto, Completelo por Favor')    
+        
+            
+    if request.method == 'GET':
+        formulario = RegistroUsuario()  
+    contexto  ={
+        'formulario': formulario
+    }   
 
-        return render('logeoregister/registro.html', context= contexto)    
+    return render(request,'paginas/registro.html',  contexto)    

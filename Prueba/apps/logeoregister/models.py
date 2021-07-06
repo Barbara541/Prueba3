@@ -11,10 +11,10 @@ class Registro(models.Model):
   
 
     def __str__(self):
-       return self.usuario.username
+       return self.nombre_Usuario.username
      
     @receiver(post_save, sender=User)
     def actualizar_perfil(sender, instance, created, **kwargs):
         if created: 
-            Registro.objects.created(usuario = instance)
-        instance.perfil.save()      
+            Registro.objects.create(nombre_Usuario = instance)
+        instance.registro.save()      
