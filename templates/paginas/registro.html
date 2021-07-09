@@ -8,11 +8,12 @@ Nuevo Usuario
         <section class="card-body">
             <h3 class="card-tittle text-center">Nuevo Registro</h3>
             <form method="POST">
-                {{%csrs_token%}}
-                {% for campo  in formulario %}
+                {%csrf_token%}
+                {% for campo in formulario %}
                     <div class="form-group col-md-12">
                         <label for="{{campo.id_for_label}}">{{campo.label}}</label>
                         {{campo}}
+                        {{campo.errors}}
                     </div>
                 {%endfor%}
                 <div class="from-group">

@@ -19,6 +19,9 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('apps.logeoregister.urls')),
-    path('',include('apps.paginapricipal.urls'))
+    path('Galeria',include('apps.logeoregister.urls')),
+    path('',include('apps.paginapricipal.urls')),
+   
+
+    
 ]
