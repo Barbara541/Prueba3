@@ -4,6 +4,7 @@
 <html lang="es_cl">
 
 <head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +20,9 @@
 </head>
 
 <body>
-
   <header class="header">
-
     <nav class="nav">
-
-      <img class="logo2" src="/static/images/Logo Pasteleria.png" alt="">
+      <img class="logo2" src="/static/images/Logo Pasteleria.png" alt=""></a>
       <button class="nav-toggle">
         <i class="fas fa-bars"></i>
       </button>
@@ -35,21 +33,29 @@
         </li>
         <li class="nav-menu-item"><a href="{% url 'productos' %}" class="nav-menu-link nav-link">Productos</a>
         </li>
-        <li class="nav-menu-item"><a href="{% url 'AcercadeNosotros'%}" class="nav-menu-link nav-link">Acerca de
-            Nosotros</a>
+        <li class="nav-menu-item"><a href="{% url 'AcercadeNosotros'%}" class="nav-menu-link nav-link">Acerca de Nosotros</a>
         </li>
-        <li class="nav-menu-item"><a href="{% url 'AgregarProducto' %}" class="nav-menu-link nav-link">Agregar Producto</a>
+        <li class="nav-menu-item"><a href="{% url 'agregarproducto' %}" class="nav-menu-link nav-link">Agregar Producto</a>
         </li>
     
         
 
       </ul>
-        <a class="red" href="https://www.instagram.com"><img class="redsocial" src="/static/images/insta2.png" alt="Instagram"></a>
+        <a class="red" href="https://www.instagram.com/delifertyc"><img class="redsocial" src="/static/images/insta2.png" alt="Instagram"></a>
         <a class="red" href="https://www.whatsapp.com"><img class="redsocial" src="/static/images/whatsapp2.png" alt="Whatsapp"></a>
         <a class="red" href="https://www.facebook.com"><img class="redsocial" src="/static/images/face2.png" alt="Whatsapp"></a>
-        <a class="red" href="{% url 'registro' %}"><img class="redsocial" src="/static/images/user.png" alt="Usuario"></a>
+        <a class="red" href="{% url 'registro' %}"><img class="redsocial" src="/static/images/user.png" alt="Registro"></a>
         
+        
+        {% if user.is_authenticated %}
+        
+        <a class="red" href=" {% url 'logout' %} "><img class="redsocial" src="/static/images/logout-rounded-left.png" alt=""></a>
 
+        {%else%}
+
+        <a class="red" href="{% url 'IniciarSesion' %}"><img class="redsocial" src="/static/images/usuario1.png" alt="Usuario"></a>
+        
+        {%endif%}
 
     </nav>
   
